@@ -2,6 +2,7 @@ import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { CqrsModule } from '@nestjs/cqrs';
+import { RedisService } from './domain/services/redis.service';
 
 import { ClubUpdatedHandler } from './domain/handlers/club-updated.handler';
 import { GetAvailabilityHandler } from './domain/handlers/get-availability.handler';
@@ -18,6 +19,7 @@ import { SearchController } from './infrastructure/controllers/search.controller
       provide: ALQUILA_TU_CANCHA_CLIENT,
       useClass: HTTPAlquilaTuCanchaClient,
     },
+    RedisService,
     GetAvailabilityHandler,
     ClubUpdatedHandler,
   ],
